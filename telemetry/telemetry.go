@@ -1,8 +1,9 @@
 package telemetry
 
 import (
-	"github.com/gruntwork-io/go-commons/telemetry"
 	"os"
+
+	"github.com/gruntwork-io/go-commons/telemetry"
 )
 
 var sendTelemetry = true

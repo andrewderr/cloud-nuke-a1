@@ -3,10 +3,12 @@ package main
 import (
 	"context"
 	"fmt"
+	"os"
 	"time"
 
 	nuke_aws "github.com/andrewderr/cloud-nuke-a1/aws"
 	"github.com/andrewderr/cloud-nuke-a1/config"
+	"github.com/andrewderr/cloud-nuke-a1/telemetry"
 )
 
 func main() {
@@ -140,7 +142,8 @@ func main() {
 	// resourceIds := usWest1Resources.IdentifiersForResourceType("ec2")
 
 	// fmt.Printf("resourceIds: %s", resourceIds)
-
+	os.Setenv("DISABLE_TELEMETRY", "true")
+	telemetry.InitTelemetry("cloud-nuke", "local-test-environment")
 	ctx := context.Background()
 	fmt.Print("Getting all resources...\n")
 	resources, err := nuke_aws.GetAllResources(ctx, query, config)
